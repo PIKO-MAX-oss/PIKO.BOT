@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>PIKO.BOT</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { background: #1a1a1a; color: white; text-align: center; font-family: sans-serif; padding: 20px; }
+    .hidden { display: none; }
+    input, button, select { padding: 10px; margin: 10px; width: 80%; max-width: 300px; }
+    button { background-color: #4CAF50; border: none; color: white; cursor: pointer; }
+    .role { margin-top: 10px; font-size: 1.2em; color: #ccc; }
+  </style>
+</head>
+<body>
+  <h1>مرحبًا بك في PIKO.BOT</h1>
+  <div id="login-section">
+    <input type="password" id="code-input" placeholder="أدخل الكود">
+    <button onclick="checkCode()">دخول</button>
+    <p class="role" id="role-info"></p>
+  </div>
+
+  <div id="user-panel" class="hidden">
+    <h2>مستخدم عادي</h2>
+    <p>يمكنك استخدام الأوامر التالية:</p>
+    <input type="text" placeholder="أدخل ID">
+    <button>LIKE</button>
+    <button>VISIT</button>
+  </div>
+
+  <div id="premium-panel" class="hidden">
+    <h2>مستخدم بريميوم</h2>
+    <p>يمكنك إنشاء أكواد للمستخدمين العاديين.</p>
+    <button>إنشاء كود جديد</button>
+  </div>
+
+  <div id="dev-panel" class="hidden">
+    <h2>لوحة المطور</h2>
+    <p>تحكم كامل في الموقع:</p>
+    <button>إدارة الأكواد</button>
+    <button>تعديل المستخدمين</button>
+  </div>
+
+  <script>
+    const validCodes = {
+      "Lina_2006": "developer",
+      "PREMIUM_123": "premium",
+      "USER_abc": "user"
+    };
+
+    function checkCode() {
+      const input = document.getElementById("code-input").value;
+      const role = validCodes[input];
+      const roleInfo = document.getElementById("role-info");
+
+      if (role === "developer") {
+        roleInfo.innerText = "تم تسجيل الدخول كمطور";
+        document.getElementById("login-section").style.display = "none";
+        document.getElementById("dev-panel").classList.remove("hidden");
+      } else if (role === "premium") {
+        roleInfo.innerText = "تم تسجيل الدخول كمستخدم بريميوم";
+        document.getElementById("login-section").style.display = "none";
+        document.getElementById("premium-panel").classList.remove("hidden");
+      } else if (role === "user") {
+        roleInfo.innerText = "تم تسجيل الدخول كمستخدم عادي";
+        document.getElementById("login-section").style.display = "none";
+        document.getElementById("user-panel").classList.remove("hidden");
+      } else {
+        roleInfo.innerText = "❌ كود غير صالح";
+      }
+    }
+  </script>
+</body>
+</html>
