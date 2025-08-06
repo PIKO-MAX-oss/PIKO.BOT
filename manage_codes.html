@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إدارة الأكواد - PIKO.BOT</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: white;
+            font-family: 'Tahoma', sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        .form-container {
+            background-color: #1f1f1f;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            max-width: 400px;
+        }
+        input, select, button {
+            padding: 10px;
+            margin: 10px 0;
+            width: 100%;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>إدارة الأكواد</h1>
+    <div class="form-container">
+        <h3>إضافة كود جديد</h3>
+        <input type="text" placeholder="الكود الجديد" id="newCode">
+        <select id="accessLevel">
+            <option value="1">مستخدم عادي (مستوى 1)</option>
+            <option value="2">مميز (مستوى 2)</option>
+            <option value="3">مطوّر (مستوى 3)</option>
+        </select>
+        <input type="number" placeholder="عدد الأيام" id="durationDays">
+        <button onclick="addCode()">إضافة الكود</button>
+    </div>
+
+    <script>
+        function addCode() {
+            const code = document.getElementById('newCode').value;
+            const level = document.getElementById('accessLevel').value;
+            const days = document.getElementById('durationDays').value;
+            alert('تمت إضافة الكود: ' + code + '\nالمستوى: ' + level + '\nالمدة: ' + days + ' أيام');
+            // هنا يتم إرسال الكود للسيرفر أو حفظه في قاعدة بيانات لاحقًا
+        }
+    </script>
+</body>
+</html>
